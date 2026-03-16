@@ -1,0 +1,114 @@
+/* ============================================================
+   Research Agent TUI — Phase 3.1 Stylesheet
+   Palette:
+     Deep Black   #0a0a0a  — screen base
+     Dark Grey    #1a1a1a  — widget surfaces
+     Dark Red     #8b0000  — borders, inactive chrome
+     Crimson      #dc143c  — active focus, cursor, highlights
+     Off-White    #e8e8e8  — primary text
+     Muted        #666666  — secondary / dim text
+   ============================================================ */
+
+/* ── Global screen ────────────────────────────────────────── */
+Screen {
+    background: #0a0a0a;
+    color: #e8e8e8;
+}
+
+/* ── Layout containers ────────────────────────────────────── */
+#root {
+    width: 1fr;
+    height: 1fr;
+    padding: 0;
+}
+
+#split-panes {
+    height: 1fr;          /* fills all space above the Input */
+    width: 1fr;
+}
+
+/* ── Left pane: Agent log ─────────────────────────────────── */
+#agent-log {
+    width: 1fr;
+    height: 1fr;
+    background: #1a1a1a;
+    border: solid #8b0000;
+    border-title-color: #dc143c;
+    border-title-align: left;
+    padding: 0 1;
+    color: #e8e8e8;
+    scrollbar-color: #8b0000;
+    scrollbar-background: #1a1a1a;
+}
+
+#agent-log:focus {
+    border: solid #dc143c;
+}
+
+/* ── Right pane: Final report ─────────────────────────────── */
+#report-pane {
+    width: 1fr;
+    height: 1fr;
+    background: #1a1a1a;
+    border: solid #8b0000;
+    border-title-color: #dc143c;
+    border-title-align: left;
+    padding: 0 1;
+    color: #e8e8e8;
+    scrollbar-color: #8b0000;
+    scrollbar-background: #1a1a1a;
+}
+
+#report-pane:focus {
+    border: solid #dc143c;
+}
+
+/* Markdown heading colours */
+#report-pane Markdown .h1 { color: #dc143c; }
+#report-pane Markdown .h2 { color: #dc143c; }
+#report-pane Markdown .h3 { color: #8b0000; }
+
+/* ── Bottom: Goal input ───────────────────────────────────── */
+#goal-input {
+    dock: bottom;
+    height: 3;
+    margin: 1 0 0 0;
+    background: #1a1a1a;
+    border: solid #8b0000;
+    color: #e8e8e8;
+    padding: 0 1;
+}
+
+#goal-input:focus {
+    border: solid #dc143c;
+}
+
+/* Cursor & selection highlight inside Input */
+#goal-input > .input--cursor {
+    background: #dc143c;
+    color: #0a0a0a;
+}
+
+#goal-input > .input--placeholder {
+    color: #666666;
+    text-style: italic;
+}
+
+/* ── Header / Footer chrome ───────────────────────────────── */
+Header {
+    background: #0a0a0a;
+    color: #dc143c;
+    border-bottom: solid #8b0000;
+}
+
+Footer {
+    background: #0a0a0a;
+    color: #666666;
+    border-top: solid #8b0000;
+}
+
+/* Highlight the active keybinding label in the footer */
+Footer > .footer--key {
+    background: #8b0000;
+    color: #e8e8e8;
+}
