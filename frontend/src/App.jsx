@@ -56,7 +56,7 @@ function App() {
 
     socketRef.current?.close()
 
-    const wsUrl = import.meta.env.VITE_WS_URL || 'ws://localhost:8000/ws/research'
+    const wsUrl = import.meta.env.VITE_WS_URL || 'wss://muhammad-alam-autonomous-research-agentv2.hf.space/ws/research'
     const ws = new WebSocket(wsUrl)
     socketRef.current = ws
 
