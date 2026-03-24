@@ -40,6 +40,12 @@ function App() {
     return () => socketRef.current?.close()
   }, [])
 
+    // Secretly wake up the Hugging Face container when the user opens the page
+  useEffect(() => {
+    const httpUrl = 'https://muhammadalam-autonomous-research-api-v2.hf.space';
+    fetch(httpUrl).catch(() => {}); // We don't care about the 404 response, just the knock
+  }, []);
+
   function appendLog(agent, message) {
     setLogs(prev => [...prev, { agent, message }])
   }
@@ -134,13 +140,13 @@ function App() {
     }
 
     ws.onerror = () => {
-      appendLog('error', 'WebSocket error — is the FastAPI server running on port 8000?')
+      appendLog('error', 'The research servers are currently booting up from standby. Please wait 30 seconds and try again.')
       setIsResearching(false)
     }
 
     ws.onclose = (ev) => {
       if (!ev.wasClean) {
-        appendLog('error', `Connection closed unexpectedly (code ${ev.code}).`)
+        appendLog('error', `Connection lost. The server might be experiencing heavy load (Code: ${ev.code}).`)
       }
       setIsResearching(false)
     }
